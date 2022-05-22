@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Yantramanav:wght@700&display=swap');
+
+body{
+    background-color: hotpink;
+    background-size: cover;
+}
+
+#heading_container{
+    background-color: rgb(159, 255, 159);
+    height: 110px;
+}
+
+#heading{
+    font-size: 34px;
+    font-family: 'Righteous', cursive;
+}
+
+#heading_container span{
+    color: white;
+    font-family: 'Yantramanav', sans-serif;
+    text-shadow: 0 0 13px black;
+    font-size: 18px;
+}
+
+#play{
+    font-size: 24px;
+    padding: 13px;
+    width: 150px;
+    border-radius: 23px;
+    border: 2px solid black;
+    background-color: rgb(255, 170, 234);
+    color: white;
+    transition: 0.25s;
+}
+
+#play:hover{
+    background-color: rgb(253, 149, 227);
+    box-shadow: 0 0 10px 2px purple;
+}
+
+
+canvas{
+    margin-top: 200px;
+    border-radius: 30px;
+    border: 5px solid pink;
+}
+
