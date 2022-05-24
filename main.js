@@ -12,9 +12,8 @@ status = "";
 
 
 function preload() {
-    song1 = loadSound("song1.mp3"); // song name = Deewana kar raha hai
+    song1 = loadSound("song1.mp3"); // song name = Peaky Blinders
     song2 = loadSound("song2.mp3");// song name = Heat Waves
-
 }
 function setup() {
     canvas = createCanvas(600, 400);
@@ -33,31 +32,31 @@ function modelLoaded() {
 
 function gotposes(results) {
     console.log(results)
-    if (results > 0) {
-
+    if (results.length > 0) {
+        lwristX = results[0].pose.leftWrist.x;
+        lwristY = results[0].pose.leftWrist.y;
+        rwristX = results[0].pose.rightWrist.x;
+        rwristY = results[0].pose.rightWrist.y;
+        lWristScore = results[0].pose.keypoints[9].score-0.000100;
+        rWristScore = results[0].pose.keypoints[10].score;
     }
-    lwristX = results[0].pose.leftWrist.x;
-    lwristY = results[0].pose.leftWrist.y;
-    rwristX = results[0].pose.rightWrist.x;
-    rwristY = results[0].pose.rightWrist.y;
-    console.log("Left wrist X - " + lwristX + "Left wrist Y - " + lwristY);
-    console.log("Right wrist X - " + rwristX + "Right wrist Y - " + rwristY);
-    lWristScore = results[0].pose.keypoints[9].score;
+
     
 }
 function draw() {
     image(video, 0, 0, 600, 400);
     fill('red');
     stroke('red');
-    status = song1.isPlaying();
-    if(lWristScore > 0.2){
-        circle(lwrist, lwristY);
+    statussong1 = song1.isPlaying();
+    console.log("Song 1 - "+statussong1+"Song 2 - "+statussong2);
+    console.log((lWristScore).toFixed(5)+", "+ (rWristScore).toFixed(5));
+    if(lWristScore > 0.1){
+        circle(lwristX, lwristY, 100);
         song2.stop();
-        if(status == false){
+        if(statussong1 == false){
             song1.play();
-            document.getElementById("song").innerHTML = "Now Playing - Deewana Kar Raha Hai..."
+            document.getElementById("song").innerHTML = "Now Playing - Peaky Blinders BGM..."
         }
     }
-}
 
 
