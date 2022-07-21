@@ -11,6 +11,7 @@ lWristScore = 0;
 status = "";
 
 
+
 function preload() {
     song1 = loadSound("song1.mp3"); // song name = Peaky Blinders
     song2 = loadSound("song2.mp3");// song name = Heat Waves
@@ -40,7 +41,7 @@ function gotposes(results) {
         lWristScore = results[0].pose.keypoints[9].score-0.000100;
         rWristScore = results[0].pose.keypoints[10].score;
     }
-
+    
     
 }
 function draw() {
@@ -58,5 +59,16 @@ function draw() {
             document.getElementById("song").innerHTML = "Now Playing - Peaky Blinders BGM..."
         }
     }
-
+    statussong2 = song2.isPlaying();
+    if(rWristScore > 0.1){
+        fill('red');
+        stroke('red');
+        circle(rwristX, rwristY,100);
+        song1.stop();
+        if(statussong2 == false){
+            song2.play();
+            document.getElementById("song").innerHTML = "Now Playing - Heat Waves..."
+        }
+    }
+}
 
